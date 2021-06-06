@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-content">
-                        <h4>$60 000</h4>
-                        <h2>Lorem ipsum dolor sit amet.</h2>
+                        <h4>AYO BERGABUNG DENGAN KAMI</h4>
+                        <h2>SEGERA DAFTARKAN DIRI ANDA</h2>
                     </div>
                 </div>
             </div>
@@ -16,13 +16,20 @@
 </div>
 
 <!-- Banner Ends Here -->
+<?php if ($this->session->flashdata('success')) : ?>
+    <!--jika brhasil -->
+    <div class="flashdata" data-flashdata=" <?= $this->session->flashdata('success') ?>" data-type="success"></div>
+<?php elseif ($this->session->flashdata('error')) : ?>
+    <div class="flashdata" data-flashdata=" <?= $this->session->flashdata('error') ?>" data-type="error"></div>
+    <!--jika gagal -->
+<?php endif; ?>
 
 <section class="blog-posts grid-system">
     <div class="container">
         <div class="row">
             <div class="col-md-5">
                 <div>
-                    <img src="<?= base_url() ?>assets/images/mitra.png" alt="" class="img-fluid wc-image">
+                    <img src="<?= base_url() ?>assets/images/<?= $job->image; ?>" alt="" class="img-fluid wc-image">
                 </div>
 
                 <br>
@@ -33,33 +40,19 @@
                     <div class="sidebar-heading">
                         Perioder Rekrutmen
                         <h2>
-                            <i class="fa fa-calendar"></i> 20/06/2020 - 20/08/2020
+                            <i class="fa fa-calendar"></i> <?= date('d/m/Y', strtotime($job->open_time)) . ' - ' . date('d/m/Y', strtotime($job->close_time)) ?>
                         </h2>
                     </div>
 
                     <div class="sidebar-heading">
-                        <h2 style="color: #f48840;">IT PROGRAMMER</h2>
+                        <h2 style="color: #f48840;"><?= $job->name; ?></h2>
                     </div>
 
                     <div class="content">
                         <div class="sidebar-heading">
                             <h2>Kualifikasi</h2>
                         </div>
-                        <ol>
-                            <li>Laki-laki/Perempuan. Usia</li>
-                            <li>Laki-laki/Perempuan, Usia Maksimal 30 Tahun</li>
-                            <li>Pendidikan min.D3 Akuntansi/Ekonomi</li>
-                            <li>Mengerti dan Menguasai pembukuan dan akuntansi keuangan</li>
-                            <li>Menguasai Program Microsoft Office</li>
-                            <li>Memiliki pengalaman kerja di bidang administrasi dan keuangan lebih diutamakan</li>
-                            <li>Menyukai pekerjaan yang berhubungan dengan administrasi dan keuangan</li>
-                            <li>Jujur, Teliti, terampil dan dapat bekerja sama dalam tim</li>
-                            <li>Terbiasa bekerja dengan target dan di bawah tekanan</li>
-                            <li>Mampu bekerjasama dalam tim</li>
-                            <li>Bersedia bekerja secara shift</li>
-                            <li>IPK Diatas 3.00</li>
-                            <li>Fresh Graduate</li>
-                        </ol>
+                        <?= $job->qualification; ?>
                     </div>
                 </div>
 
@@ -68,7 +61,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="main-button">
-                            <a href="#">APPLY NOW</a>
+                            <a href="<?= base_url('job/submitjob/' . $this->encrypt->encode($job->id)) ?>">APPLY NOW</a>
                         </div>
                     </div>
                 </div>

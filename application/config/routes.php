@@ -51,8 +51,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['default_controller'] = 'user_job';
 
-$route['job']                = 'user_job';
-$route['job/detail']         = 'user_job/detail';
+$route['job']                   = 'user_job';
+$route['job/detail/(:any)']     = 'user_job/detail/$1';
+$route['job/submitjob/(:any)']  = 'user_job/submit/$1';
 
 $route['auth']               = 'user_auth';
 $route['auth/register']      = 'user_auth/register';

@@ -16,7 +16,13 @@
 </div>
 
 <!-- Banner Ends Here -->
-
+<?php if ($this->session->flashdata('success')) : ?>
+    <!--jika brhasil -->
+    <div class="flashdata" data-flashdata=" <?= $this->session->flashdata('success') ?>" data-type="success"></div>
+<?php elseif ($this->session->flashdata('error')) : ?>
+    <div class="flashdata" data-flashdata=" <?= $this->session->flashdata('error') ?>" data-type="error"></div>
+    <!--jika gagal -->
+<?php endif; ?>
 
 <section class="contact-us">
     <div class="container">
