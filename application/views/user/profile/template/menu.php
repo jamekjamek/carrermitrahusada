@@ -35,10 +35,14 @@
                                         <li class="<?= $this->uri->segment(2) === "family" ? 'active' : ''; ?>">
                                             <a href="<?= base_url('profile/family') ?>">- Data Keluarga</a>
                                         </li>
+                                        <li class="<?= $this->uri->segment(1) === "emergency" ? 'active' : ''; ?>">
+                                            <a href="<?= base_url('emergency'); ?>">- Kontak Darurat</a>
+                                        </li>
                                         <li><a href="#">- Pendidikan Formal</a></li>
                                         <li><a href="#">- Pendidikan Non Formal</a></li>
                                         <li><a href="#">- Riwayat Pekerjaan</a></li>
                                         <li><a href="#">- Lain-lain</a></li>
+                                        <li><a href="<?= base_url('auth/logout') ?>">- Logout</a></li>
                                     </ul>
                                 </div>
                             </div>

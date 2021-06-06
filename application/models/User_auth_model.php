@@ -14,4 +14,9 @@ class User_auth_model extends CI_Model
         $this->db->insert($this->table, $data);
         return $this->db->affected_rows();
     }
+
+    public function getDataBy($data)
+    {
+        return $this->db->get_where($this->table, $data);
+    }
 }

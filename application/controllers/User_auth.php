@@ -10,15 +10,42 @@ class User_auth extends CI_Controller
 
     public function index()
     {
-        $data = [
-            'hallo' => 'hallo'
-        ];
-        $page   = 'auth/index';
-        pageFrontEnd($page, $data);
+
+        if (session()) {
+            redirect('profile/index');
+        }
+        $this->_validation('login');
+        if ($this->form_validation->run() === FALSE) {
+            $page   = 'auth/index';
+            pageFrontEnd($page);
+        } else {
+            $this->_login();
+        }
+    }
+
+    private function _login()
+    {
+        $email          = htmlspecialchars($this->input->post('email'));
+        $cekEmail       = $this->Auth->getDataBy(['email' => $email])->row();
+        if ($cekEmail) {
+            if (password_verify(htmlspecialchars($this->input->post('password')), $cekEmail->password)) {
+                $this->session->set_userdata('employe', $cekEmail);
+                redirect('profile/index');
+            } else {
+                $this->session->set_flashdata('error', 'Password salah');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Email salah');
+            redirect('auth');
+        }
     }
 
     public function register()
     {
+        if (session()) {
+            redirect('profle/index');
+        }
         $this->_validation();
         if ($this->form_validation->run() === FALSE) {
             $data = [
@@ -31,12 +58,12 @@ class User_auth extends CI_Controller
                 'email'             => htmlspecialchars($this->input->post('email')),
                 'password'          => htmlspecialchars(password_hash($this->input->post('password'), PASSWORD_DEFAULT)),
                 'fullname'          => htmlspecialchars($this->input->post('fullname')),
+                'gender'            => 'L',
+                'religion'          => 'Islam',
+                'status'            => 'kawin',
                 // 'nickname'          => '',
                 // 'place_of_birth'    => '',
                 // 'date_of_birth'     => '',
-                // 'gender'            => '',
-                // 'religion'          => '',
-                // 'status'            => '',
                 // 'height'            => '',
                 // 'identity_number'   => '',
                 // 'address'           => '',
@@ -59,43 +86,70 @@ class User_auth extends CI_Controller
         }
     }
 
-    private function _validation()
+    private function _validation($type = null)
     {
-        $this->form_validation->set_rules(
-            'fullname',
-            'Nama lengkap',
-            'trim|required',
-            [
-                'required' => '%s wajib diisi'
-            ]
-        );
-        $this->form_validation->set_rules(
-            'email',
-            'Email',
-            'trim|required|valid_email',
-            [
-                'required'      => '%s wajib diisi',
-                'valid_email'   => 'format %s salah',
-            ]
-        );
+        if ($type == 'login') {
+            $this->form_validation->set_rules(
+                'email',
+                'Email',
+                'trim|required|valid_email',
+                [
+                    'required'      => '%s wajib diisi',
+                    'valid_email'   => 'format %s salah',
+                ]
+            );
+            $this->form_validation->set_rules(
+                'password',
+                'Password',
+                'trim|required',
+                [
+                    'required'  => '%s wajib diisi',
+                ]
+            );
+        } else {
+            $this->form_validation->set_rules(
+                'email',
+                'Email',
+                'trim|required|valid_email',
+                [
+                    'required'      => '%s wajib diisi',
+                    'valid_email'   => 'format %s salah',
+                ]
+            );
+            $this->form_validation->set_rules(
+                'password',
+                'Password',
+                'trim|required',
+                [
+                    'required'  => '%s wajib diisi',
+                ]
+            );
 
-        $this->form_validation->set_rules(
-            'password',
-            'Password',
-            'trim|required',
-            [
-                'required'  => '%s wajib diisi',
-            ]
-        );
+            $this->form_validation->set_rules(
+                'fullname',
+                'Nama lengkap',
+                'trim|required',
+                [
+                    'required' => '%s wajib diisi'
+                ]
+            );
 
-        $this->form_validation->set_rules(
-            'confirmpassword',
-            'Konfirmasi Password',
-            'trim|required|matches[password]',
-            [
-                'required'  => '%s wajib diisi',
-                'matches'   => '%s tidak cocok',
-            ]
-        );
+
+            $this->form_validation->set_rules(
+                'confirmpassword',
+                'Konfirmasi Password',
+                'trim|required|matches[password]',
+                [
+                    'required'  => '%s wajib diisi',
+                    'matches'   => '%s tidak cocok',
+                ]
+            );
+        }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('employe');
+        redirect('job');
     }
 }

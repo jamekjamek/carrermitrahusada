@@ -20,3 +20,9 @@ function pageProfile($page = '', $data = '')
     $ci->load->view('user/template/bottombar', $data);
     $ci->load->view('user/template/footer', $data);
 }
+
+function session()
+{
+    $ci = get_instance();
+    return $ci->session->userdata('employe');
+}

@@ -27,7 +27,6 @@
 <section class="contact-us">
     <div class="container">
         <div class="row">
-
             <div class="col-lg-12">
                 <div class="down-contact">
                     <div class="row">
@@ -36,30 +35,26 @@
                                 <div class="sidebar-heading">
                                     <h2>LOGIN</h2>
                                 </div>
-                                <div class="content">
-                                    <form id="contact" action="" method="post">
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <fieldset>
-                                                    <input name="email" type="text" id="email" placeholder="email" autofocus>
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-12 col-sm-12">
-                                                <fieldset>
-                                                    <input name="password" type="text" id="password" placeholder="password">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="pull-left">
-                                                    <a href="<?= base_url('profile/index') ?>" id="form-submit" class="btn btn-primary">Login</a>
-                                                </div>
-                                                <div class="pull-right">
-                                                    <a href="<?= base_url('auth/register') ?>">Daftar</a>
-                                                </div>
-                                            </div>
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control <?= form_error('email') ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Masukan Nama Lengkap" value="<?= set_value('email'); ?>">
+                                        <?= form_error('email', '<p class="invalid-feedback">', '</p>'); ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control <?= form_error('password') ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="Masukan Password" value="<?= set_value('password'); ?>">
+                                        <?= form_error('password', '<p class="invalid-feedback">', '</p>'); ?>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="pull-left">
+                                            <button type="submit" class="main-button">Login</button>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="pull-right">
+                                            <a href="<?= base_url('auth/register') ?>">Daftar</a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

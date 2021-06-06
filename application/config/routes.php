@@ -49,17 +49,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'user_job';
+$route['default_controller']            = 'user_job';
 
-$route['job']                   = 'user_job';
-$route['job/detail/(:any)']     = 'user_job/detail/$1';
-$route['job/submitjob/(:any)']  = 'user_job/submit/$1';
+$route['job']                           = 'user_job';
+$route['job/detail/(:any)']             = 'user_job/detail/$1';
+$route['job/submitjob/(:any)']          = 'user_job/submit/$1';
 
-$route['auth']               = 'user_auth';
-$route['auth/register']      = 'user_auth/register';
+$route['auth']                          = 'user_auth';
+$route['auth/register']                 = 'user_auth/register';
+$route['auth/logout']                   = 'user_auth/logout';
 
-$route['profile/index']      = 'user_profile';
-$route['profile/family']     = 'user_profile/family';
+$route['profile/index']                 = 'user_profile';
+$route['profile/family']                = 'user_profile/family';
+$route['profile/family/add']            = 'user_profile/addfamily';
+$route['profile/family/delete/(:any)']  = 'user_profile/deletefamily/$1';
 
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['emergency']                     = 'user_profile/emergency';
+
+$route['404_override']                  = '';
+$route['translate_uri_dashes']          = FALSE;

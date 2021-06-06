@@ -7,6 +7,7 @@ class User_job extends CI_Controller
     {
         parent::__construct();
         $this->load->model('User_job_model', 'Job');
+        $this->user = $this->session->userdata('employe');
     }
 
     public function index()
@@ -35,9 +36,9 @@ class User_job extends CI_Controller
     public function submit($id)
     {
         $jobId  = $this->encrypt->decode($id);
-        if ($this->session->userdata('employe')) {
+        if ($this->user) {
             $dataInsert = [
-                'employe_id'    => '1',
+                'employe_id'    => $this->user->id,
                 'job_id'        => $jobId
             ];
             $insert = $this->Job->insert($dataInsert);

@@ -11,26 +11,25 @@ $(document).ready(()=>{
             timerProgressBar: true,
         })
     }
-    
-    
-    $('#apply-now').on('click',()=>{
-        // e.preventDefault();
-        let $this = $(this);
-        let id = $this.attr('data-id'); // pake ini coba, kali aja bisa
-        console.log(id);
-        $.ajax({
-            url: `${base_url}job/submitjob`,
-            method:"POST",
-            dataType: "JSON",
-            data:{
-                id:id
-            },
-            beforeSend:()=>{
 
-            },
-            success:()=>{
-
-            }
-        });
-    });
+    function deleteQuestion(url, text){
+        Swal.fire({
+                text: text,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yakin'
+          }).then((result) => {
+                if (result.isConfirmed) {
+                    document.location.href = url;
+                }
+          })
+        }
+    
+    $(".delete-family").on("click", function(){
+        var id  = $(this).data("id");
+        var url = `${base_url}profile/family/delete/${id}`;
+        deleteQuestion(url,'Yakin akan menghapus data ini !');
+    })
 })
