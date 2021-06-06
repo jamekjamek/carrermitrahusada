@@ -60,9 +60,13 @@ $route['auth/register']                 = 'user_auth/register';
 $route['auth/logout']                   = 'user_auth/logout';
 
 $route['profile/index']                 = 'user_profile';
+
 $route['profile/family']                = 'user_profile/family';
 $route['profile/family/add']            = 'user_profile/addfamily';
 $route['profile/family/delete/(:any)']  = 'user_profile/deletefamily/$1';
+
+$route['profile/education']             = 'user_profile/education';
+$route['profile/getregency']            = 'user_profile/getregency';
 
 $route['emergency']                     = 'user_profile/emergency';
 

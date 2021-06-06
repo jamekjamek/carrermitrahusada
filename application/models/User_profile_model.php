@@ -9,6 +9,7 @@ class User_profile_model extends CI_Model
         $this->table            = 'm_employe';
         $this->tableFamily      = 'tr_employe_to_family';
         $this->tableEmergency   = 'tr_employe_to_emergency_contact';
+        $this->tableEducation   = 'tr_employe_to_education';
     }
 
     public function insert($data)
@@ -58,14 +59,36 @@ class User_profile_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function getDataEmergencyBy($data)
-    {
-        return $this->db->get_where($this->tableEmergency, $data);
-    }
 
     public function insertEmergency($data)
     {
         $this->db->insert($this->tableEmergency, $data);
+        return $this->db->affected_rows();
+    }
+
+    public function getDataEducationBy($data)
+    {
+        $this->db->select('a.*,b.id as kabupaten_id, b.nama as kabupaten');
+        $this->db->join('kabupaten as b', 'a.regency_id=b.id');
+        return $this->db->get_where($this->tableEducation . ' a', $data);
+    }
+
+    public function getRegency($input)
+    {
+        $this->db->like('nama', $input);
+        $this->db->limit(10);
+        return $this->db->get('kabupaten');
+    }
+
+    public function updateEducation($data, $where)
+    {
+        $this->db->update($this->tableEducation, $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function insertEducation($data)
+    {
+        $this->db->insert($this->tableEducation, $data);
         return $this->db->affected_rows();
     }
 }

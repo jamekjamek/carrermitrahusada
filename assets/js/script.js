@@ -32,4 +32,25 @@ $(document).ready(()=>{
         var url = `${base_url}profile/family/delete/${id}`;
         deleteQuestion(url,'Yakin akan menghapus data ini !');
     })
+
+    $('.get-regency').select2({
+        placeholder:'Cari nama kabupaten',
+        minimumInputLength:3,
+        ajax:{
+            url:`${base_url}profile/getregency`,
+            dataType:'JSON',
+            type:'POST',
+            data:function(params){
+                return{
+                    search:params.term
+                }
+            },
+            processResults:function(data){
+                return{
+                    results:data
+                }
+            },
+            cache:true
+        },
+    });
 })

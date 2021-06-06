@@ -15,7 +15,7 @@
                         </a>
                     </li>
                     <?php if (session()) : ?>
-                        <li class="nav-item <?= $this->uri->segment(1) === 'profile' ? "active" : ""; ?>">
+                        <li class="nav-item <?= $this->uri->segment(1) === 'profile' || $this->uri->segment(1) === 'emergency' ? "active" : ""; ?>">
                             <a class="nav-link" href="<?= base_url('profile/index') ?>">Profil</a>
                         </li>
                     <?php else : ?>

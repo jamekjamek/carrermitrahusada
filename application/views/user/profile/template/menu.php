@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-content">
-                        <h4>Blog</h4>
-                        <h2>Our Recent Blog Posts</h2>
+                        <h4>Data Personal</h4>
+                        <h2>Lengkapi profil mu untuk berbagung dengan kami</h2>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,9 @@
                                         <li class="<?= $this->uri->segment(1) === "emergency" ? 'active' : ''; ?>">
                                             <a href="<?= base_url('emergency'); ?>">- Kontak Darurat</a>
                                         </li>
-                                        <li><a href="#">- Pendidikan Formal</a></li>
+                                        <li class="<?= $this->uri->segment(2) === "education" ? 'active' : ''; ?>">
+                                            <a href="<?= base_url('profile/education'); ?>">- Pendidikan Formal</a>
+                                        </li>
                                         <li><a href="#">- Pendidikan Non Formal</a></li>
                                         <li><a href="#">- Riwayat Pekerjaan</a></li>
                                         <li><a href="#">- Lain-lain</a></li>
