@@ -5,6 +5,7 @@ use function PHPSTORM_META\map;
 defined('BASEPATH') or exit('No direct script access allowed');
 class User_profile extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -463,6 +464,61 @@ class User_profile extends CI_Controller
         }
     }
 
+    public function cv()
+    {
+        $data   = [
+            'employe'   => $this->Profile->getDataBy(['id' => session()->id])->row()
+        ];
+        $page   = 'profile/cv/index';
+        pageProfile($page, $data);
+
+        // } else {
+        // die;
+        // $config['allowed_types']    = 'pdf';
+        // $config['max_size']         = '2048';
+        // $config['upload_path']      = './assets/cv/';
+        // $this->upload->initialize($config);
+        // if ($this->upload->do_upload('cv')) {
+        //     $cv = $this->upload->data();
+        //     $filename   = $cv['file_name'];
+        //     var_dump($filename);
+        //     die;
+        // } else {
+        //     $this->session->set_flashdata('error', $this->upload->display_errors());
+        // }
+        // redirect('profile/cv');
+        // }
+    }
+
+    public function uploadcv()
+    {
+        $cv = $_FILES['cv']['name'];
+        if ($cv) {
+            $config['allowed_types']    = 'pdf';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './assets/cv/';
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('cv')) {
+                $cv = $this->upload->data();
+                $filename   = $cv['file_name'];
+                $dataUpdate = [
+                    'cv'    => $filename,
+                ];
+                $update     = $this->Profile->update($dataUpdate, ['id' => session()->id]);
+                if ($update > 0) {
+                    $this->session->set_flashdata('success', 'CV Berhasil di update');
+                } else {
+                    $this->session->set_flashdata('error', 'Server sedang sibuk, silahkan coba lagi');
+                }
+            } else {
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+            }
+        } else {
+            $this->session->set_flashdata('error', 'CV Wajib di upload');
+        }
+        redirect('profile/cv');
+    }
+
     private function _validation($type = null)
     {
         if ($type === 'personal') {
@@ -892,6 +948,20 @@ class User_profile extends CI_Controller
                     'required' => '%s wajib diisi'
                 ]
             );
+        }
+
+        if ($type === 'cv') {
+            // $cv = ;
+            if (empty($_FILES['cv']['name'])) {
+                $this->form_validation->set_rules(
+                    'cv',
+                    'CV',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+            }
         }
     }
 }

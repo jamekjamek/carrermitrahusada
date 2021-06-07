@@ -80,6 +80,9 @@ $route['profile/jobhistory/delete/(:any)']  = 'user_profile/deletehistory/$1';
 
 
 $route['profile/etc']                       = 'user_profile/etc';
+$route['profile/cv']                        = 'user_profile/cv';
+$route['profile/upload']                    = 'user_profile/uploadcv';
+
 $route['emergency']                         = 'user_profile/emergency';
 
 $route['404_override']                      = '';
