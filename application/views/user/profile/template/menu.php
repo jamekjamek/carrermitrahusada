@@ -41,8 +41,12 @@
                                         <li class="<?= $this->uri->segment(2) === "education" ? 'active' : ''; ?>">
                                             <a href="<?= base_url('profile/education'); ?>">- Pendidikan Formal</a>
                                         </li>
-                                        <li><a href="#">- Pendidikan Non Formal</a></li>
-                                        <li><a href="#">- Riwayat Pekerjaan</a></li>
+                                        <li class="<?= $this->uri->segment(2) === "nonformaleducation"  || $this->uri->segment(2) === "organisation" || $this->uri->segment(2) === "language" || $this->uri->segment(2) === "training" ? 'active' : ''; ?>">
+                                            <a href="<?= base_url('profile/nonformaleducation'); ?>">- Pendidikan Non Formal</a>
+                                        </li>
+                                        <li class="<?= $this->uri->segment(2) === "jobhistory" ? "active" : ""; ?>">
+                                            <a href="<?= base_url('profile/jobhistory'); ?>">- Riwayat Pekerjaan</a>
+                                        </li>
                                         <li><a href="#">- Lain-lain</a></li>
                                         <li><a href="<?= base_url('auth/logout') ?>">- Logout</a></li>
                                     </ul>

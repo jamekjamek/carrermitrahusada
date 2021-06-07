@@ -49,26 +49,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller']            = 'user_job';
+$route['default_controller']                = 'user_job';
 
-$route['job']                           = 'user_job';
-$route['job/detail/(:any)']             = 'user_job/detail/$1';
-$route['job/submitjob/(:any)']          = 'user_job/submit/$1';
+$route['job']                               = 'user_job';
+$route['job/detail/(:any)']                 = 'user_job/detail/$1';
+$route['job/submitjob/(:any)']              = 'user_job/submit/$1';
 
-$route['auth']                          = 'user_auth';
-$route['auth/register']                 = 'user_auth/register';
-$route['auth/logout']                   = 'user_auth/logout';
+$route['auth']                              = 'user_auth';
+$route['auth/register']                     = 'user_auth/register';
+$route['auth/logout']                       = 'user_auth/logout';
 
-$route['profile/index']                 = 'user_profile';
+$route['profile/index']                     = 'user_profile';
 
-$route['profile/family']                = 'user_profile/family';
-$route['profile/family/add']            = 'user_profile/addfamily';
-$route['profile/family/delete/(:any)']  = 'user_profile/deletefamily/$1';
+$route['profile/family']                    = 'user_profile/family';
+$route['profile/family/add']                = 'user_profile/addfamily';
+$route['profile/family/delete/(:any)']      = 'user_profile/deletefamily/$1';
 
-$route['profile/education']             = 'user_profile/education';
-$route['profile/getregency']            = 'user_profile/getregency';
+$route['profile/education']                 = 'user_profile/education';
+$route['profile/getregency']                = 'user_profile/getregency';
 
-$route['emergency']                     = 'user_profile/emergency';
 
-$route['404_override']                  = '';
-$route['translate_uri_dashes']          = FALSE;
+$route['profile/nonformaleducation']        = 'user_profile/nonformaleducation';
+$route['profile/organisation']              = 'user_profile/organisation';
+$route['profile/training']                  = 'user_profile/training';
+$route['profile/language']                  = 'user_profile/language';
+
+$route['profile/jobhistory']                = 'user_profile/jobhistory';
+$route['profile/jobhistory/add']            = 'user_profile/createjobhistory';
+$route['profile/jobhistory/delete/(:any)']  = 'user_profile/deletehistory/$1';
+
+$route['emergency']                         = 'user_profile/emergency';
+
+$route['404_override']                      = '';
+$route['translate_uri_dashes']              = FALSE;
