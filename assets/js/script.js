@@ -59,4 +59,49 @@ $(document).ready(() => {
 			cache: true
 		},
 	});
+
+
+
+    //ETC
+    $('input:radio[name=questionTwo]').change(function() {
+        if (this.value == '1') {
+            $('.whenqustionTwo').removeClass("d-none");
+            $('.positionQuestionTwo').removeClass("d-none");
+        }
+        else if (this.value == '0') {
+            $('.whenqustionTwo').addClass("d-none");
+            $('.positionQuestionTwo').addClass("d-none");
+        }
+    });
+
+    $('input:radio[name=qustionThree]').change(function() {
+        if (this.value == '1') {
+            $('.positionQuestionThree').removeClass("d-none");
+        }
+        else if (this.value == '0') {
+            $('.positionQuestionThree').addClass("d-none");
+        }
+    });
+
+    $('input:radio[name=questionFive]').change(function() {
+        if (this.value == '1') {
+            $('.whereQuestionFive').removeClass("d-none");
+            $('.positionQuestionFive').removeClass("d-none");
+        }
+        else if (this.value == '0') {
+            $('.whereQuestionFive').addClass("d-none");
+            $('.positionQuestionFive').addClass("d-none");
+        }
+    });
+    
+    $('input:radio[name=questionSix]').change(function() {
+        if (this.value == '1') {
+            $('.whenQuestionSix').removeClass("d-none");
+            $('.diseaseQuestionSix').removeClass("d-none");
+        }
+        else if (this.value == '0') {
+            $('.whenQuestionSix').addClass("d-none");
+            $('.diseaseQuestionSix').addClass("d-none");
+        }
+    });
 })

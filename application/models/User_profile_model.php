@@ -14,6 +14,7 @@ class User_profile_model extends CI_Model
         $this->tableTraining        = 'tr_employe_to_training';
         $this->tableLanguage        = 'tr_employe_to_language';
         $this->tableJobHistory      = 'tr_employe_to_job_history';
+        $this->tableEtc             = 'tr_employe_to_question';
     }
 
     public function insert($data)
@@ -161,6 +162,17 @@ class User_profile_model extends CI_Model
     public function deleteJobHistory($data)
     {
         $this->db->delete($this->tableJobHistory, $data);
+        return $this->db->affected_rows();
+    }
+
+    public function getDataEtcBy($data)
+    {
+        return $this->db->get_where($this->tableEtc, $data);
+    }
+
+    public function updateEtc($data, $where)
+    {
+        $this->db->update($this->tableEtc, $data, $where);
         return $this->db->affected_rows();
     }
 }

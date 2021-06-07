@@ -35,9 +35,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="year" class="col-sm-3 col-form-label">Tahun Kelulusan</label>
+                            <label for="year" class="col-sm-3 col-form-label">Tahun</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control <?= form_error('year') ? "is-invalid" : ""; ?>" id="year" name="year" placeholder="Masukan tahun kelulusan" value="<?= set_value('year') ? set_value('year') : @$organisation->year; ?>">
+                                <input type="text" class="form-control <?= form_error('year') ? "is-invalid" : ""; ?>" id="year" name="year" placeholder="Masukan tahun" value="<?= set_value('year') ? set_value('year') : @$organisation->year; ?>">
                                 <?= form_error('year', '<label class="invalid-feedback">', '</label>') ?>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="trainingyear" class="col-sm-3 col-form-label">Tahun Kelulusan</label>
+                            <label for="trainingyear" class="col-sm-3 col-form-label">Tahun</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control <?= form_error('trainingyear') ? "is-invalid" : ""; ?>" id="trainingyear" name="trainingyear" placeholder="Masukan tahun" value="<?= set_value('trainingyear') ? set_value('trainingyear') : @$training->year; ?>">
                                 <?= form_error('trainingyear', '<label class="invalid-feedback">', '</label>') ?>

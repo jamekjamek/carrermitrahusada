@@ -61,19 +61,6 @@ class User_auth extends CI_Controller
                 'gender'            => 'L',
                 'religion'          => 'Islam',
                 'status'            => 'kawin',
-                // 'nickname'          => '',
-                // 'place_of_birth'    => '',
-                // 'date_of_birth'     => '',
-                // 'height'            => '',
-                // 'identity_number'   => '',
-                // 'address'           => '',
-                // 'address_id'        => '',
-                // 'residence'         => '',
-                // 'residence_id'      => '',
-                // 'handphone'         => '',
-                // 'phone'             => '',
-                // 'photo'             => '',
-                // 'photo_full_body'   => '',
 
             ];
             $insert     = $this->Auth->insert($dataInput);

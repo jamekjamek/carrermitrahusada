@@ -47,7 +47,9 @@
                                         <li class="<?= $this->uri->segment(2) === "jobhistory" ? "active" : ""; ?>">
                                             <a href="<?= base_url('profile/jobhistory'); ?>">- Riwayat Pekerjaan</a>
                                         </li>
-                                        <li><a href="#">- Lain-lain</a></li>
+                                        <li class="<?= $this->uri->segment(2) === "etc" ? "active" : ""; ?>">
+                                            <a href="<?= base_url('profile/etc'); ?>">- Lain-lain</a>
+                                        </li>
                                         <li><a href="<?= base_url('auth/logout') ?>">- Logout</a></li>
                                     </ul>
                                 </div>

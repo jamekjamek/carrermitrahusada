@@ -377,6 +377,92 @@ class User_profile extends CI_Controller
         redirect('profile/jobhistory');
     }
 
+    public function etc()
+    {
+        $this->_validation('etc');
+        if ($this->form_validation->run() === false) {
+            $data   = [
+                'etc'   => $this->Profile->getDataEtcBy(['employe_id' => session()->id])->row()
+            ];
+            $page   = 'profile/etc/index';
+            pageProfile($page, $data);
+        } else {
+            $questionOne            = $this->input->post('questionOne');
+            $questionTwo            = $this->input->post('questionTwo');
+            $whenqustionTwo         = $this->input->post('whenqustionTwo');
+            $positionQuestionTwo    = $this->input->post('positionQuestionTwo');
+            $qustionThree           = $this->input->post('qustionThree');
+            $positionQuestionThree  = $this->input->post('positionQuestionThree');
+            $questionFour           = $this->input->post('questionFour');
+            $questionFive           = $this->input->post('questionFive');
+            $whereQuestionFive      = $this->input->post('whereQuestionFive');
+            $positionQuestionFive   = $this->input->post('positionQuestionFive');
+            $questionSix            = $this->input->post('questionSix');
+            $whenQuestionSix        = $this->input->post('whenQuestionSix');
+            $diseaseQuestionSix     = $this->input->post('diseaseQuestionSix');
+            $questionSeven          = $this->input->post('questionSeven');
+            $questionEight          = $this->input->post('questionEight');
+            $questionNine           = $this->input->post('questionNine');
+
+            if ($questionTwo === "0") {
+                $whenqustionTwo         = null;
+                $positionQuestionTwo    = null;
+            } else {
+                $whenqustionTwo         = $whenqustionTwo;
+                $positionQuestionTwo    = $positionQuestionTwo;
+            }
+
+            if ($qustionThree === "0") {
+                $positionQuestionThree  = null;
+            } else {
+                $positionQuestionThree  = $positionQuestionThree;
+            }
+
+            if ($questionFive === "0") {
+                $whereQuestionFive      = null;
+                $positionQuestionFive   = null;
+            } else {
+                $whereQuestionFive      = $whereQuestionFive;
+                $positionQuestionFive   = $positionQuestionFive;
+            }
+
+            if ($questionSix === "0") {
+                $whenQuestionSix        = null;
+                $diseaseQuestionSix     = null;
+            } else {
+                $whenQuestionSix        = $whenQuestionSix;
+                $diseaseQuestionSix     = $diseaseQuestionSix;
+            }
+
+            $dataUpdateEtc  =   [
+                'question_one'              => $questionOne,
+                'question_two'              => $questionTwo,
+                'when_question_two'         => $whenqustionTwo,
+                'position_question_two'     => $positionQuestionTwo,
+                'question_three'            => $qustionThree,
+                'position_question_three'   => $positionQuestionThree,
+                'question_four'             => $questionFour,
+                'question_five'             => $questionFive,
+                'where_question_five'       => $whereQuestionFive,
+                'position_question_five'    => $positionQuestionFive,
+                'question_six'              => $questionSix,
+                'when_question_six'         => $whenQuestionSix,
+                'disease_question_six'      => $diseaseQuestionSix,
+                'question_seven'            => $questionSeven,
+                'question_eight'            => $questionEight,
+                'question_nine'             => $questionNine,
+                'updated_at'                => date('Y-m-d H:i:s')
+            ];
+            $update         = $this->Profile->updateEtc($dataUpdateEtc, ['employe_id' => session()->id]);
+            if ($update > 0) {
+                $this->session->set_flashdata('success', 'Data berhasil di update');
+            } else {
+                $this->session->set_flashdata('error', 'Server sedang sibuk, silahkan coba lagi');
+            }
+            redirect('profile/etc');
+        }
+    }
+
     private function _validation($type = null)
     {
         if ($type === 'personal') {
@@ -712,6 +798,98 @@ class User_profile extends CI_Controller
                 'trim|required',
                 [
                     'required'  => '%s wajib diisi',
+                ]
+            );
+        }
+
+        if ($type === 'etc') {
+            $this->form_validation->set_rules(
+                'questionOne',
+                'Nama Perusahaan',
+                'trim|required',
+                [
+                    'required' => '%s wajib diisi'
+                ]
+            );
+
+            if ($this->input->post('questionTwo') === '1') {
+                $this->form_validation->set_rules(
+                    'whenqustionTwo',
+                    'Field ini',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+                $this->form_validation->set_rules(
+                    'positionQuestionTwo',
+                    'Field ini',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+            }
+            if ($this->input->post('qustionThree') === '1') {
+                $this->form_validation->set_rules(
+                    'positionQuestionThree',
+                    'Field ini',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+            }
+            if ($this->input->post('questionFive') === '1') {
+                $this->form_validation->set_rules(
+                    'whereQuestionFive',
+                    'Field ini',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+                $this->form_validation->set_rules(
+                    'positionQuestionFive',
+                    'Field ini',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+            }
+            if ($this->input->post('questionSix') === '1') {
+                $this->form_validation->set_rules(
+                    'whenQuestionSix',
+                    'Field ini',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+                $this->form_validation->set_rules(
+                    'diseaseQuestionSix',
+                    'Field ini',
+                    'trim|required',
+                    [
+                        'required' => '%s wajib diisi'
+                    ]
+                );
+            }
+            $this->form_validation->set_rules(
+                'questionSeven',
+                'Field ini',
+                'trim|required',
+                [
+                    'required' => '%s wajib diisi'
+                ]
+            );
+            $this->form_validation->set_rules(
+                'questionEight',
+                'Field ini',
+                'trim|required',
+                [
+                    'required' => '%s wajib diisi'
                 ]
             );
         }

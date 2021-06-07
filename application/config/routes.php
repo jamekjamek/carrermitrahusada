@@ -78,6 +78,8 @@ $route['profile/jobhistory']                = 'user_profile/jobhistory';
 $route['profile/jobhistory/add']            = 'user_profile/createjobhistory';
 $route['profile/jobhistory/delete/(:any)']  = 'user_profile/deletehistory/$1';
 
+
+$route['profile/etc']                       = 'user_profile/etc';
 $route['emergency']                         = 'user_profile/emergency';
 
 $route['404_override']                      = '';
