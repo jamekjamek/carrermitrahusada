@@ -289,10 +289,159 @@
                                 <dd class="col-sm-9"><?= "Rp " . number_format($job->salary, 2, ',', '.'); ?></dd>
                                 <dt class="col-sm-3">Alasan berhenti kerja</dt>
                                 <dd class="col-sm-9"><?= $job->reason; ?></dd>
-
                             </dl>
                             <hr />
                         <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAIN-LAIN -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <strong>
+                                Lain-lain
+                            </strong>
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    1. Dari mana anda mengatahui lowongan kerja di RS. Mitra Husada
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_one; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    2. Apakah anda pernah melamar kerja di RS Mitra Husada sebelumnya
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_two === '1' ? "Iya" : "Tidak"; ?>">
+                        </div>
+
+                        <?php if ($etc->when_question_two !== null) : ?>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label"><strong> Kapan :</strong></label>
+                                <div class="col-sm-11">
+                                    <input type="text" readonly class="form-control-plaintext" value="<?= $etc->when_question_two; ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($etc->position_question_two !== null) : ?>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label"><strong> Posisi :</strong></label>
+                                <div class="col-sm-11">
+                                    <input type="text" readonly class="form-control-plaintext" value="<?= $etc->position_question_two; ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    3. Apakah saat ini anda melamar kerja di perusahaan/rs lain?
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_three === '1' ? "Iya" : "Tidak"; ?>">
+                        </div>
+
+                        <?php if ($etc->position_question_three !== null) : ?>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label"><strong> Posisi :</strong></label>
+                                <div class="col-sm-11">
+                                    <input type="text" readonly class="form-control-plaintext" value="<?= $etc->position_question_three; ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    4. Apakah saat ini anda terikat kontrak dengan perusahaan/rs lain?
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_four === '1' ? "Iya" : "Tidak"; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    5. Apakah anda memilki pekerjaan part time ?
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_five === '1' ? "Iya" : "Tidak"; ?>">
+                        </div>
+                        <?php if ($etc->where_question_five !== null) : ?>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label"><strong> Dimana:</strong></label>
+                                <div class="col-sm-11">
+                                    <input type="text" readonly class="form-control-plaintext" value="<?= $etc->where_question_five; ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($etc->position_question_five !== null) : ?>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label"><strong> Posisi:</strong></label>
+                                <div class="col-sm-11">
+                                    <input type="text" readonly class="form-control-plaintext" value="<?= $etc->position_question_five; ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    6. Apakah anda pernah mengalami sakit keras atau menjalani perawatan intensif?
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_six === '1' ? "Iya" : "Tidak"; ?>">
+                        </div>
+                        <?php if ($etc->when_question_six !== null) : ?>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><strong> Kapan:</strong></label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="<?= $etc->when_question_six; ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($etc->disease_question_six !== null) : ?>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><strong> Sakit Apa:</strong></label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="<?= $etc->disease_question_six; ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    7. Apabila diterima, kapan anda mulai bekerja
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_seven; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    8. Berapa besar gaji yang anda harapkan?
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= "Rp " . number_format($etc->question_eight, 2, ',', '.'); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <strong>
+                                    9. Apakah anda mempunyai saudara atau teman yang bekerja di RS Mitra Husada husada ?
+                                </strong>
+                            </label>
+                            <input class="form-control-plaintext" readonly value="<?= $etc->question_nine === '1' ? "Iya" : "Tidak"; ?>">
+                        </div>
                     </div>
                 </div>
             </div>

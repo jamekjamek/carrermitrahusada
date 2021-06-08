@@ -55,6 +55,7 @@ class Admin_report extends CI_Controller
         $training       = $this->Report->getDataByDetail('tr_employe_to_training', ['employe_id' => $detail->employe_id])->row();
         $language       = $this->Report->getDataByDetail('tr_employe_to_language', ['employe_id' => $detail->employe_id])->row();
         $jobhistory     = $this->Report->getDataByDetail('tr_employe_to_job_history', ['employe_id' => $detail->employe_id])->result();
+        $etc            = $this->Report->getDataByDetail('tr_employe_to_question', ['employe_id' => $detail->employe_id])->row();
         if ($detail) {
             $data   = [
                 'title'         => 'Detail Data Pendaftar',
@@ -67,7 +68,8 @@ class Admin_report extends CI_Controller
                 'organisation'  => $organisation,
                 'training'      => $training,
                 'language'      => $language,
-                'jobhistory'    => $jobhistory
+                'jobhistory'    => $jobhistory,
+                'etc'           => $etc
             ];
             $page   = 'report/jobemploye/detail';
             pageBackend($page, $data);
