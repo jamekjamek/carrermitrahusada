@@ -24,7 +24,6 @@ class User_profile extends CI_Controller
         } else {
             $dataUpdate = [
                 'email'             => htmlspecialchars($this->input->post('email')),
-                'password'          => htmlspecialchars(password_hash($this->input->post('password'), PASSWORD_DEFAULT)),
                 'fullname'          => htmlspecialchars($this->input->post('fullname')),
                 'gender'            => htmlspecialchars($this->input->post('gender')),
                 'religion'          => htmlspecialchars($this->input->post('religion')),

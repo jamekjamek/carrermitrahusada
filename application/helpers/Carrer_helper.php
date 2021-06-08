@@ -21,6 +21,17 @@ function pageProfile($page = '', $data = '')
     $ci->load->view('user/template/footer', $data);
 }
 
+function pageBackend($page = '', $data = '')
+{
+    $ci = get_instance();
+    $ci->load->view('admin/template/header', $data);
+    $ci->load->view('admin/template/topbar', $data);
+    $ci->load->view('admin/template/sidebar', $data);
+    $ci->load->view('admin/' . $page, $data);
+    $ci->load->view('admin/template/footer', $data);
+}
+
+
 function session()
 {
     $ci = get_instance();

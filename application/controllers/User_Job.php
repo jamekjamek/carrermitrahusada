@@ -37,15 +37,20 @@ class User_job extends CI_Controller
     {
         $jobId  = $this->encrypt->decode($id);
         if ($this->user) {
-            $dataInsert = [
-                'employe_id'    => $this->user->id,
-                'job_id'        => $jobId
-            ];
-            $insert = $this->Job->insert($dataInsert);
-            if ($insert > 0) {
-                $this->session->set_flashdata('success', 'Anda berhasil mendaftarkan di job ini');
+            $cekUserJob = $this->Job->getDataEmployeToJob(['employe_id' => $this->user->id, 'job_id' => $jobId]);
+            if ($cekUserJob->num_rows() > 0) {
+                $this->session->set_flashdata('error', 'Anda sudah terdaftar di job ini');
             } else {
-                $this->session->set_flashdata('error', 'Server sedang gangguan, silahkan coba lagi');
+                $dataInsert = [
+                    'employe_id'    => $this->user->id,
+                    'job_id'        => $jobId
+                ];
+                $insert = $this->Job->insert($dataInsert);
+                if ($insert > 0) {
+                    $this->session->set_flashdata('success', 'Anda berhasil mendaftarkan di job ini');
+                } else {
+                    $this->session->set_flashdata('error', 'Server sedang gangguan, silahkan coba lagi');
+                }
             }
         } else {
             $this->session->set_flashdata('error', 'Anda harus login terlebih dahulu');

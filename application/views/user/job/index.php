@@ -53,7 +53,7 @@
                                     if ($today > $job->close_time) : ?>
                                         <label class="badge badge-danger">Pendaftaran Tutup</label>
                                     <?php else : ?>
-                                        <label class="badge badge-success">Pendaftaran tutup</label>
+                                        <label class="badge badge-success">Pendaftaran dibuka</label>
                                     <?php endif; ?>
                                 </p>
                                 <div class="post-options">

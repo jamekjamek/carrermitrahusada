@@ -37,8 +37,8 @@
                 <div class="form-group row">
                     <label for="email" class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control <?= form_error('email') ? "is-invalid" : ""; ?>" id="email" placeholder="Masukan Email" name="email" value="<?= set_value('email') ? set_value('email') : $employe->email; ?>">
-                        <?= form_error('fullname', '<label class="invalid-feedback">', '</label>'); ?>
+                        <input type="text" readonly class="form-control <?= form_error('email') ? "is-invalid" : ""; ?>" id="email" placeholder="Masukan Email" name="email" value="<?= set_value('email') ? set_value('email') : $employe->email; ?>">
+                        <?= form_error('email', '<label class="invalid-feedback">', '</label>'); ?>
                     </div>
                 </div>
                 <div class="form-group row">

@@ -27,8 +27,9 @@ class User_auth extends CI_Controller
     {
         $email          = htmlspecialchars($this->input->post('email'));
         $cekEmail       = $this->Auth->getDataBy(['email' => $email])->row();
+
         if ($cekEmail) {
-            if (password_verify(htmlspecialchars($this->input->post('password')), $cekEmail->password)) {
+            if (password_verify($this->input->post('password'), $cekEmail->password)) {
                 $this->session->set_userdata('employe', $cekEmail);
                 redirect('profile/index');
             } else {
@@ -48,11 +49,8 @@ class User_auth extends CI_Controller
         }
         $this->_validation();
         if ($this->form_validation->run() === FALSE) {
-            $data = [
-                'hallo' => 'hallo'
-            ];
             $page   = 'auth/register';
-            pageFrontEnd($page, $data);
+            pageFrontEnd($page);
         } else {
             $dataInput  = [
                 'email'             => htmlspecialchars($this->input->post('email')),
@@ -97,10 +95,11 @@ class User_auth extends CI_Controller
             $this->form_validation->set_rules(
                 'email',
                 'Email',
-                'trim|required|valid_email',
+                'trim|required|valid_email|is_unique[m_employe.email]',
                 [
                     'required'      => '%s wajib diisi',
                     'valid_email'   => 'format %s salah',
+                    'is_unique'     => '%s sudah terdaftar'
                 ]
             );
             $this->form_validation->set_rules(

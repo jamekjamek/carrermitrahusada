@@ -25,4 +25,9 @@ class User_job_model extends CI_Model
         $this->db->insert($this->tableJobEmploye, $data);
         return $this->db->affected_rows();
     }
+
+    public function getDataEmployeToJob($data)
+    {
+        return $this->db->get_where($this->tableJobEmploye, $data);
+    }
 }

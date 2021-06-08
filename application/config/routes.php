@@ -85,5 +85,10 @@ $route['profile/upload']                    = 'user_profile/uploadcv';
 
 $route['emergency']                         = 'user_profile/emergency';
 
+
+
+//ADMIN
+$route['dashboard']                          = 'Admin_dashboard';
+
 $route['404_override']                      = '';
 $route['translate_uri_dashes']              = FALSE;
