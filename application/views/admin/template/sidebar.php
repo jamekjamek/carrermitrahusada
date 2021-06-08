@@ -14,19 +14,19 @@
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
                 <div class="nav-lavel">Navigation</div>
-                <div class="nav-item active">
-                    <a href="#"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
+                <div class="nav-item <?= $this->uri->segment(2) === 'dashboard' ? "active" : ""; ?>">
+                    <a href="<?= base_url('admin/dashboard') ?>"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                 </div>
-                <div class="nav-item">
-                    <a href="#"><i class="ik ik-menu"></i><span>Data Job</span></a>
+                <div class="nav-item <?= $this->uri->segment(2) === 'job' ? "active" : ""; ?>">
+                    <a href="<?= base_url('admin/job'); ?>"><i class="ik ik-menu"></i><span>Data Job</span></a>
                 </div>
-                <div class="nav-item">
-                    <a href="#"><i class="ik ik-box"></i><span>Data User</span></a>
+                <div class="nav-item <?= $this->uri->segment(2) === 'employe' ? "active" : ""; ?>">
+                    <a href="<?= base_url('admin/employe') ?>"><i class="ik ik-box"></i><span>Data User</span></a>
                 </div>
-                <div class="nav-item has-sub">
+                <div class="nav-item has-sub <?= $this->uri->segment(2) === 'report' ? "active open" : ""; ?>">
                     <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Laporan</span> <span class="badge badge-danger">3</span></a>
                     <div class="submenu-content">
-                        <a href="#" class="menu-item">Data Pendaftar</a>
+                        <a href="<?= base_url('admin/report/registrant') ?>" class="menu-item  <?= $this->uri->segment(3) === 'registrant' ?  "active" : ""; ?>">Data Pendaftar</a>
                     </div>
                 </div>
             </nav>

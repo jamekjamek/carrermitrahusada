@@ -88,7 +88,15 @@ $route['emergency']                         = 'user_profile/emergency';
 
 
 //ADMIN
-$route['dashboard']                          = 'Admin_dashboard';
+$route['login']                             = 'Admin_auth';
+$route['logout']                            = 'Admin_auth/logout';
+$route['admin/dashboard']                   = 'Admin_dashboard';
+
+$route['admin/job']                         = 'Admin_job';
+$route['admin/employe']                     = 'Admin_employe';
+
+$route['admin/report/registrant']           = 'Admin_report';
+$route['admin/report/pdfregistrant']        = 'Admin_report/reportpdf';
 
 $route['404_override']                      = '';
 $route['translate_uri_dashes']              = FALSE;

@@ -59,7 +59,14 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="main-button">
-                            <a href="<?= base_url('job/submitjob/' . $this->encrypt->encode($job->id)) ?>">APPLY NOW</a>
+
+                            <?php
+                            $today  = date('Y-m-d');
+                            if ($today > $job->close_time) : ?>
+                                <span class="badge badge-danger">Pendaftaran Tutup</span>
+                            <?php else : ?>
+                                <a href="<?= base_url('job/submitjob/' . $this->encrypt->encode($job->id)) ?>">APPLY NOW</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
