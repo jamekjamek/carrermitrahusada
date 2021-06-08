@@ -75,7 +75,7 @@
                                         <td><?= $data->name; ?></td>
                                         <td><?= $data->fullname; ?></td>
                                         <td>
-                                            <a type="button" class="btn btn-icon btn-warning" title="Detail"><i class="ik ik-book-open"></i></a>
+                                            <a href="<?= base_url('admin/report/detail/' . $this->encrypt->encode($data->id));  ?>" class="btn btn-icon btn-warning" title="Detail"><i class="ik ik-book-open"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

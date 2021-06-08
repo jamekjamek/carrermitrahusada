@@ -24,9 +24,9 @@
                     <a href="<?= base_url('admin/employe') ?>"><i class="ik ik-box"></i><span>Data User</span></a>
                 </div>
                 <div class="nav-item has-sub <?= $this->uri->segment(2) === 'report' ? "active open" : ""; ?>">
-                    <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Laporan</span> <span class="badge badge-danger">3</span></a>
+                    <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Laporan</span></a>
                     <div class="submenu-content">
-                        <a href="<?= base_url('admin/report/registrant') ?>" class="menu-item  <?= $this->uri->segment(3) === 'registrant' ?  "active" : ""; ?>">Data Pendaftar</a>
+                        <a href="<?= base_url('admin/report/registrant') ?>" class="menu-item  <?= $this->uri->segment(3) === 'registrant' || $this->uri->segment(3) === 'detail' ?  "active" : ""; ?>">Data Pendaftar</a>
                     </div>
                 </div>
             </nav>

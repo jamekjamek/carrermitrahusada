@@ -97,6 +97,7 @@ $route['admin/employe']                     = 'Admin_employe';
 
 $route['admin/report/registrant']           = 'Admin_report';
 $route['admin/report/pdfregistrant']        = 'Admin_report/reportpdf';
+$route['admin/report/detail/(:any)']        = 'Admin_report/detail/$1';
 
 $route['404_override']                      = '';
 $route['translate_uri_dashes']              = FALSE;

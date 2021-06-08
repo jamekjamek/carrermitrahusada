@@ -42,4 +42,37 @@ class Admin_report extends CI_Controller
         $mpdf->WriteHTML($data);
         $mpdf->Output();
     }
+
+    public function detail($id)
+    {
+        $decode         = $this->encrypt->decode($id);
+        $detail         = $this->Report->getDataBy(['a.id' => $decode])->row();
+        $personal       = $this->Report->getDataEmployeBy(['id' => $detail->employe_id])->row();
+        $familiy        = $this->Report->getDataFamily(['employe_id' => $detail->employe_id])->result();
+        $emergency      = $this->Report->getDataEmergency(['employe_id' => $detail->employe_id])->row();
+        $education      = $this->Report->getDataEducationBy(['employe_id' => $detail->employe_id])->row();
+        $organisation   = $this->Report->getDataByDetail('tr_employe_to_organisation', ['employe_id' => $detail->employe_id])->row();
+        $training       = $this->Report->getDataByDetail('tr_employe_to_training', ['employe_id' => $detail->employe_id])->row();
+        $language       = $this->Report->getDataByDetail('tr_employe_to_language', ['employe_id' => $detail->employe_id])->row();
+        $jobhistory     = $this->Report->getDataByDetail('tr_employe_to_job_history', ['employe_id' => $detail->employe_id])->result();
+        if ($detail) {
+            $data   = [
+                'title'         => 'Detail Data Pendaftar',
+                'subtitle'      => 'Menampilkan detail data pendaftar',
+                'detail'        => $detail,
+                'personal'      => $personal,
+                'datafamily'    => $familiy,
+                'emergency'     => $emergency,
+                'education'     => $education,
+                'organisation'  => $organisation,
+                'training'      => $training,
+                'language'      => $language,
+                'jobhistory'    => $jobhistory
+            ];
+            $page   = 'report/jobemploye/detail';
+            pageBackend($page, $data);
+        } else {
+            echo "page not found";
+        }
+    }
 }
