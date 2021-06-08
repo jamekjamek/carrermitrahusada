@@ -98,7 +98,7 @@
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <?php if ($personal->cv === null) : ?>
-                                    <h4> CV Belum di Upload</h4>
+                                    <h4 class="my-4 text-danger"> CV Belum di Upload</h4>
                                 <?php else : ?>
                                     <embed src="<?= base_url('assets/cv/' . $personal->cv) ?>" class="mt-4" type="application/pdf" height="800px" width="100%">
                                 <?php endif; ?>

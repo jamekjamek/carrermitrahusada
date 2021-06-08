@@ -93,6 +93,9 @@ $route['logout']                            = 'Admin_auth/logout';
 $route['admin/dashboard']                   = 'Admin_dashboard';
 
 $route['admin/job']                         = 'Admin_job';
+$route['admin/job/add']                     = 'Admin_job/create';
+
+
 $route['admin/employe']                     = 'Admin_employe';
 
 $route['admin/report/registrant']           = 'Admin_report';

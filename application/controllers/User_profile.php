@@ -470,23 +470,6 @@ class User_profile extends CI_Controller
         ];
         $page   = 'profile/cv/index';
         pageProfile($page, $data);
-
-        // } else {
-        // die;
-        // $config['allowed_types']    = 'pdf';
-        // $config['max_size']         = '2048';
-        // $config['upload_path']      = './assets/cv/';
-        // $this->upload->initialize($config);
-        // if ($this->upload->do_upload('cv')) {
-        //     $cv = $this->upload->data();
-        //     $filename   = $cv['file_name'];
-        //     var_dump($filename);
-        //     die;
-        // } else {
-        //     $this->session->set_flashdata('error', $this->upload->display_errors());
-        // }
-        // redirect('profile/cv');
-        // }
     }
 
     public function uploadcv()

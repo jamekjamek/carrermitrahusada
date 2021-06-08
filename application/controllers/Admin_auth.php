@@ -41,7 +41,7 @@ class Admin_auth extends CI_Controller
             if ($cek) {
                 if (password_verify($password, $cek->password)) {
                     $this->session->set_userdata('admin', $cek);
-                    redirect('admin/dashboard');
+                    redirect('admin/job');
                 } else {
                     $this->session->set_flashdata(
                         'error',

@@ -14,9 +14,9 @@
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
                 <div class="nav-lavel">Navigation</div>
-                <div class="nav-item <?= $this->uri->segment(2) === 'dashboard' ? "active" : ""; ?>">
+                <!-- <div class="nav-item <?= $this->uri->segment(2) === 'dashboard' ? "active" : ""; ?>">
                     <a href="<?= base_url('admin/dashboard') ?>"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
-                </div>
+                </div> -->
                 <div class="nav-item <?= $this->uri->segment(2) === 'job' ? "active" : ""; ?>">
                     <a href="<?= base_url('admin/job'); ?>"><i class="ik ik-menu"></i><span>Data Job</span></a>
                 </div>

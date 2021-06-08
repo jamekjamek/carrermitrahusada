@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>plugins/weather-icons/css/weather-icons.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>plugins/c3/c3.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>plugins/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>plugins/summernote/dist/summernote-bs4.css">
     <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>dist/css/theme.min.css">
     <script src="<?= base_url('assets/backend/') ?>src/js/vendor/modernizr-2.8.3.min.js"></script>

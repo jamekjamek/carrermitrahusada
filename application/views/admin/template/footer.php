@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="w-100 clearfix">
-        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2018 ThemeKit v2.0. All Rights Reserved.</span>
+        <span class="text-center text-sm-left d-md-inline-block">Copyright © <?= date('Y') ?> Agung Hardiyanto.</span>
         <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">Lavalite</a></span>
     </div>
 </footer>
@@ -25,11 +25,17 @@
 <script src="<?= base_url('assets/backend/') ?>plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
 <script src="<?= base_url('assets/backend/') ?>plugins/d3/dist/d3.min.js"></script>
 <script src="<?= base_url('assets/backend/') ?>plugins/c3/c3.min.js"></script>
+<script src="<?= base_url('assets/backend/') ?>plugins/summernote/dist/summernote-bs4.min.js"></script>
 <script src="<?= base_url('assets/backend/') ?>js/tables.js"></script>
 <script src="<?= base_url('assets/backend/') ?>js/widgets.js"></script>
 <script src="<?= base_url('assets/backend/') ?>js/charts.js"></script>
 <script src="<?= base_url('assets/backend/') ?>dist/js/theme.min.js"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+<script>
+    var base_url = "<?= base_url() ?>";
+</script>
+<script src="<?= base_url('assets/backend/js/script.js') ?>"></script>
 <script>
     (function(b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;
